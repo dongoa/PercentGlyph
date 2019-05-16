@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Bad+Script:400" rel="stylesheet" type="text/css">
+	<title>+++</title>
+	<style type="text/css">
+		*{font-family: 'Bad Script', sans-serif;}
+		body{
+			padding: 60px 0px 60px; 
+			background-color: #f8f8f8;
+			}
+		h1{
+				font-size: 30px;
+				font-weight: 400;
+				display: inline;
+				padding-left: 10px;
+				/*vertical-align: top;*/
+		}
+		h2{
+			font-size: 30px;
+		}
+		.col{
+			width: 650px;
+			margin:0 auto;
+		}
+		.row{
+			width: 300px;
+			display: inline-block;
+			border-top: 1px solid #ccc;
+			padding-top: 25px;
+			margin:0px 20px 80px 0px;
+			vertical-align: top;
+		}
+		.Glyph{
+			display: inline-block;
+		}
+		.text{
+			font-weight: 400;
+			color: #333;
+			line-height: 220%;
+			padding-top: 5px;
+			/*text-align: center;*/
+		}
+
+	</style>
+</head>
+<body>
+	<div class="col">
+		<h2>Percent glyphs</h2>
+		<div class="row">
+
+			<h1 id="pieText">88%</h1>
+			<div id="pieGlyph" class="Glyph pie" data-value="88"></div>
+			<div class="text">
+				Pie Glyph:<br>
+				fill color:&nbsp;<input id="p1" type="color" value="#00ACE4" onchange="glyph.donutf1(this.value)" />
+				path color:&nbsp;<input id="p2" type="color" value="#ffffff" onchange="glyph.donutf2(this.value)"/>
+			</div>
+		</div>
+		<div class="row">
+			<h1 id="circleText">78%</h1>
+			<div id="circleGlyph" class="Glyph circle" data-value="78"></div>
+			<div class="text">
+				Circle Glyph:<br>
+				fill color1:&nbsp;<input id="c1" type="color" value="#00D8A5" onchange="glyph.circlef1(this.value)" />&nbsp;
+				fill color2:&nbsp;<input id="c2" type="color" value="#e5e5e5" onchange="glyph.circlef2(this.value)"/>
+			</div>
+		</div>
+		<div class="row">
+			<h1 id="barHText">50%</h1>
+			<div id="barHGlyph" class="Glyph barH" data-value="50"></div>
+			<div class="text">
+				Horizontal Bar:<br/>
+				fill color1:&nbsp;<input id="h1" type="color" value="#9b59b6" onchange="glyph.barHorizontalf1(this.value)" />&nbsp;
+				fill color2:&nbsp;<input id="h2" type="color" value="#e5e5e5" onchange="glyph.barHorizontalf2(this.value)"/>
+			</div>
+		</div>
+		<div class="row">
+			<h1 id="barVText">90%</h1>
+			<div id="barVGlyph" class="Glyph barV" data-value="92"></div>
+			<div class="text">
+				Vertical Bar:<br/>
+				fill color1:&nbsp;<input id="v1" type="color" value="#F1B719" onchange="glyph.barVerticalf1(this.value)" />&nbsp;
+				fill color2:&nbsp;<input id="v2" type="color" value="#e5e5e5" onchange="glyph.barVerticalf2(this.value)"/>
+			</div>
+		</div>
+		<div class="row">
+			<h1 id="barVText2">50%</h1>
+			<div id="barVGlyph2" class="Glyph barV" data-value="50"></div>
+			<div class="text">
+				Rotate 45 Vertical Bar:<br/>
+				fill color1:&nbsp;<input id="vv1" type="color" value="#e74c3c" onchange="glyph.barVerticalf12(this.value)" />&nbsp;
+				fill color2:&nbsp;<input id="vv2" type="color" value="#e5e5e5" onchange="glyph.barVerticalf22(this.value)"/>
+			</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="./percentglyph.js"></script>
+	<script type="text/javascript">
+		var colors = ["#00ACE4", "#00D8A5", "#9b59b6", "#F1B719", "#e74c3c"];
+
+		//init Percent glyph with Percentglyph(width,height,colors,color_deactivated)
+
+		var glyph=new Percentglyph(200,120,colors,'#e5e5e5',"#fff");
+
+		//change text color and init Percent glyph
+		document.getElementById('pieText').style.color=colors[0];
+		var val=document.getElementById('pieGlyph').getAttribute('data-value');
+		glyph.donut('#pieGlyph',val,colors[0]);
+
+		document.getElementById('circleText').style.color=colors[1];
+		var val=document.getElementById('circleGlyph').getAttribute('data-value');
+		glyph.circle('#circleGlyph',val,colors[1]);
+
+		document.getElementById('barHText').style.color=colors[2];
+		var val=document.getElementById('barHGlyph').getAttribute('data-value');
+		glyph.barHorizontal('#barHGlyph',val,colors[2]);
+
+		document.getElementById('barVText').style.color=colors[3];
+		var val=document.getElementById('barVGlyph').getAttribute('data-value');
+		glyph.barVertical('#barVGlyph',val,colors[3]);
+
+		document.getElementById('barVText2').style.color=colors[4];
+		var val=document.getElementById('barVGlyph2').getAttribute('data-value');
+		glyph.barVertical('#barVGlyph2',val,colors[4],true);
+
+
+	</script>
+</body>
+</html>
